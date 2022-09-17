@@ -11,7 +11,7 @@ interface NewsApiDataSource {
         sortBy: String
     ): ApiDefaultResponse<NewsApiResponse>
 
-    suspend fun searchBy(
+    suspend fun filterBy(
         country: String,
         category: String
     ): ApiDefaultResponse<NewsApiResponse>

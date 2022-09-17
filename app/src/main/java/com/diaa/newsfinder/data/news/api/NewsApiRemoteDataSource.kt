@@ -19,12 +19,12 @@ class NewsApiRemoteDataSource(
         }
     }
 
-    override suspend fun searchBy(
+    override suspend fun filterBy(
         country: String,
         category: String
     ): ApiDefaultResponse<NewsApiResponse> {
         return try {
-            ApiDefaultResponse.create(apiEndpoints.searchBy(country, category))
+            ApiDefaultResponse.create(apiEndpoints.filterBy(country, category))
         } catch (e: Exception) {
             ApiDefaultResponse.create(e)
         }

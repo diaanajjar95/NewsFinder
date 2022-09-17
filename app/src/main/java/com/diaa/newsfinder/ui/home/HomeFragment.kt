@@ -59,11 +59,11 @@ class HomeFragment : BaseFragment() {
 
             filterBottomSheet.addListener(object : FilterBottomSheet.OnButtonsClickListener {
                 override fun onApply(filters: Pair<String?, String?>) {
-                    showMessage("onApply ${filters.first} - ${filters.second}")
+//                    viewModel.filterBy(filters.first, filters.second)
                 }
 
                 override fun onClear() {
-                    showMessage("onClear")
+
                 }
             })
 

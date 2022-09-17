@@ -8,5 +8,14 @@
     <string name="filter_by_country">By Country</string>
     <string name="filter_by_category">By Category</string>
     <string name="searchin">Search In</string>
+    <string name="us">US</string>
+    <string name="ae">AE</string>
+    <string name="jo">JO</string>
+    <string name="sport">Sport</string>
+    <string name="business">Business</string>
+    <string name="health">Health</string>
+    <string name="apply">Apply</string>
+    <string name="clear">Clear</string>
+    <string name="search_in_news_api_hint">Search in News Api…</string>
 
 </resources>

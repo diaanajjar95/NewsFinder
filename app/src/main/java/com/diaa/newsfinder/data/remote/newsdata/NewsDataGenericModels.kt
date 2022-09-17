@@ -4,9 +4,6 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-class Empty
-
-@JsonClass(generateAdapter = true)
 data class NewsDataErrorResponse(
     @Json(name = "results")
     val results: ErrorResults?,
@@ -20,10 +17,4 @@ data class ErrorResults(
     val code: String?,
     @Json(name = "message")
     val message: String?
-)
-
-@JsonClass(generateAdapter = true)
-data class NewsDataGenericResponse<T>(
-    @Json(name = "data")
-    val data: T
 )

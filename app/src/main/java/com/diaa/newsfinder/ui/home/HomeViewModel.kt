@@ -23,7 +23,8 @@ class HomeViewModel(
     private val newsDataRepository: NewsDataDataSource,
 ) : ViewModel() {
 
-    private val _horizontalItems: MutableLiveData<MutableList<HorizontalNewsItem>> = MutableLiveData()
+    private val _horizontalItems: MutableLiveData<MutableList<HorizontalNewsItem>> =
+        MutableLiveData()
     val horizontalItems: LiveData<MutableList<HorizontalNewsItem>> = _horizontalItems
 
     private val _verticalItems: MutableLiveData<MutableList<VerticalNewsItem>> = MutableLiveData()
@@ -114,6 +115,26 @@ class HomeViewModel(
                     _verticalItems.value = NewsDataMapper.buildFrom(result.body)
                 }
                 is ApiDefaultResponse.Failed -> {
+                    _message.value = result.error.localizedMessage
+                }
+            }
+        }
+    }
+
+    fun filterBy(country: String?, category: String?) {
+        _loading.value = true
+        viewModelScope.launch {
+            when (val result =
+                newsApiRepository.filterBy(
+                    country = country ?: "",
+                    category = category ?: ""
+                )) {
+                is ApiDefaultResponse.Success -> {
+                    _loading.value = false
+                    _horizontalItems.value = NewsApiMapper.buildFrom(result.body)
+                }
+                is ApiDefaultResponse.Failed -> {
+                    _loading.value = false
                     _message.value = result.error.localizedMessage
                 }
             }

@@ -12,9 +12,9 @@
             style="@style/Theme.NewsFinder.TextAppearance.Semibold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dim_margin_sub_title"
+            android:layout_margin="@dimen/dim_16dp"
             android:text="@string/news_api"
-            android:textSize="@dimen/font_title"
+            android:textSize="@dimen/font_24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,7 +22,7 @@
             android:id="@+id/horizontalRc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dim_margin_list"
+            android:layout_margin="@dimen/dim_16dp"
             android:background="@null"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

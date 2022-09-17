@@ -9,9 +9,9 @@
 
         <View
             android:id="@+id/view"
-            android:layout_width="100dp"
-            android:layout_height="3dp"
-            android:layout_marginTop="24dp"
+            android:layout_width="@dimen/dim_100dp"
+            android:layout_height="@dimen/dim_3dp"
+            android:layout_marginTop="@dimen/dim_24dp"
             android:background="@color/gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -22,9 +22,9 @@
             style="@style/Theme.NewsFinder.TextAppearance.Semibold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dim_margin_sub_title"
+            android:layout_margin="@dimen/dim_16dp"
             android:text="@string/filter_by_country"
-            android:textSize="16sp"
+            android:textSize="@dimen/font_16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view" />
 
@@ -32,7 +32,7 @@
             android:id="@+id/countriesRadioGroup"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
+            android:layout_marginHorizontal="@dimen/dim_24dp"
             android:checkedButton="@+id/us_radio_button"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="@+id/filterByCountryTv"
@@ -44,19 +44,19 @@
                 android:id="@+id/us_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="us" />
+                android:text="@string/us" />
 
             <RadioButton
                 android:id="@+id/ae_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ae" />
+                android:text="@string/ae" />
 
             <RadioButton
                 android:id="@+id/jo_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="jo" />
+                android:text="@string/jo" />
         </RadioGroup>
 
         <com.google.android.material.textview.MaterialTextView
@@ -64,9 +64,9 @@
             style="@style/Theme.NewsFinder.TextAppearance.Semibold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dim_margin_sub_title"
+            android:layout_margin="@dimen/dim_16dp"
             android:text="@string/filter_by_category"
-            android:textSize="16sp"
+            android:textSize="@dimen/font_16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/countriesRadioGroup" />
 
@@ -74,7 +74,7 @@
             android:id="@+id/categoryRadioGroup"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
+            android:layout_marginHorizontal="@dimen/dim_24dp"
             android:checkedButton="@+id/sport_radio_button"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="@+id/filterByCategoryTv"
@@ -86,30 +86,30 @@
                 android:id="@+id/sport_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sport" />
+                android:text="@string/sport" />
 
             <RadioButton
                 android:id="@+id/business_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Business" />
+                android:text="@string/business" />
 
             <RadioButton
                 android:id="@+id/health_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Health" />
+                android:text="@string/health" />
         </RadioGroup>
 
         <Button
             android:id="@+id/applyBtn"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dim_0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginTop="@dimen/dim_24dp"
+            android:layout_marginEnd="@dimen/dim_16dp"
+            android:layout_marginBottom="@dimen/dim_24dp"
             android:backgroundTint="@color/blue"
-            android:text="Apply"
+            android:text="@string/apply"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -120,12 +120,12 @@
             android:id="@+id/clearBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginStart="@dimen/dim_16dp"
+            android:layout_marginTop="@dimen/dim_24dp"
+            android:layout_marginEnd="@dimen/dim_8dp"
+            android:layout_marginBottom="@dimen/dim_24dp"
             android:backgroundTint="@color/white"
-            android:text="Clear"
+            android:text="@string/clear"
             android:textColor="@color/gray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/applyBtn"

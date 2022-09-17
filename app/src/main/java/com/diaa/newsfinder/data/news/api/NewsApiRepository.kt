@@ -18,12 +18,12 @@ class NewsApiRepository(
         }
     }
 
-    override suspend fun searchBy(
+    override suspend fun filterBy(
         country: String,
         category: String
     ): ApiDefaultResponse<NewsApiResponse> {
         return withContext(Dispatchers.IO) {
-            remoteDataSource.searchBy(country, category)
+            remoteDataSource.filterBy(country, category)
         }
     }
 }

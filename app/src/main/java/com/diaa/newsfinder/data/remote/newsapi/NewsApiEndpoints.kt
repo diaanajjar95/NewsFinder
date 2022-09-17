@@ -15,7 +15,7 @@ interface NewsApiEndpoints {
     ): Response<NewsApiResponse>
 
     @GET("v2/top-headlines/")
-    suspend fun searchBy(
+    suspend fun filterBy(
         @Query("country") country: String,
         @Query("category") category: String
     ): Response<NewsApiResponse>
