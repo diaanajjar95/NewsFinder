@@ -7,12 +7,10 @@ interface BindingAdapters {
 
     @BindingAdapter(
         "appImageUrl",
-        "appCorners",
         requireAll = false
     )
     fun AppCompatImageView.setImage(
-        imageUrl: String?,
-        corners: Float = 0f
+        imageUrl: String?
     )
 
 }
