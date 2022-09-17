@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="dim_margin_title">24dp</dimen>
+    <dimen name="dim_margin_sub_title">16dp</dimen>
+    <dimen name="dim_margin_image">8dp</dimen>
+    <dimen name="dim_margin_list">16dp</dimen>
+    <dimen name="dim_margin_layout">16dp</dimen>
+
+
+    <dimen name="dim_card_corner_radius">24dp</dimen>
+    <dimen name="dim_card_elevation">8dp</dimen>
+
+    <dimen name="font_title">24sp</dimen>
+    <dimen name="font_sub_title">18sp</dimen>
+    <dimen name="font_sub_title_small">14sp</dimen>
+    <dimen name="font_date">18sp</dimen>
+</resources>

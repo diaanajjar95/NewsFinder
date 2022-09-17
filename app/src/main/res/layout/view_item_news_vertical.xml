@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.diaa.newsfinder.ui.home.models.VerticalNewsItem" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        android:layout_marginVertical="4dp"
+        app:cardCornerRadius="@dimen/dim_card_corner_radius">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/imageHolderCardView"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/dim_margin_image"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/dim_card_corner_radius"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="140dp"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    app:appImageUrl="@{item.imageUrl}"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/authorTv"
+                style="@style/Theme.NewsFinder.TextAppearance.Medium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/font_sub_title"
+                android:layout_marginVertical="@dimen/dim_margin_sub_title"
+                android:ellipsize="end"
+                android:gravity="start"
+                android:maxLines="1"
+                android:text="@{item.author}"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/font_sub_title_small"
+                app:layout_constraintEnd_toStartOf="@+id/postDateTv"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Author Diaa" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/postDateTv"
+                style="@style/Theme.NewsFinder.TextAppearance.Medium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/font_sub_title"
+                android:ellipsize="end"
+                android:gravity="end"
+                android:maxLines="1"
+                android:text="@{item.postDate}"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/font_sub_title_small"
+                app:layout_constraintBottom_toBottomOf="@+id/authorTv"
+                app:layout_constraintEnd_toStartOf="@id/imageHolderCardView"
+                app:layout_constraintStart_toEndOf="@+id/authorTv"
+                app:layout_constraintTop_toTopOf="@+id/authorTv"
+                tools:text="08/10/1995" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/titleTv"
+                style="@style/Theme.NewsFinder.TextAppearance.Semibold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dim_margin_title"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@{item.title}"
+                android:textSize="@dimen/font_sub_title"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageHolderCardView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/authorTv"
+                tools:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting," />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>
