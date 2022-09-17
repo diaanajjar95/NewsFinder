@@ -1,5 +1,6 @@
 package com.diaa.newsfinder.ui.home
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,6 +15,8 @@ import com.diaa.newsfinder.ui.mappers.NewsDataMapper
 import com.hadilq.liveevent.LiveEvent
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
 
 class HomeViewModel(
     private val newsApiRepository: NewsApiDataSource,
@@ -32,16 +35,24 @@ class HomeViewModel(
 
     private var nextPage: Int? = 1
 
+    @SuppressLint("SimpleDateFormat")
+    fun getTodayDate(): String {
+        val date = Calendar.getInstance().time
+        val sdfDestination = SimpleDateFormat("yyyy/mm/dd")
+        return sdfDestination.format(date)
+    }
+
     fun getInitData() {
         _loading.value = true
         viewModelScope.launch {
             val newsApi =
-                async { newsApiRepository.getNewsApiList("tesla", "2022-08-18", "publishedAt") }
+                async { newsApiRepository.getNewsApiList("tesla", getTodayDate(), "publishedAt") }
             val newsData =
                 async { newsDataRepository.getNewsDataList(nextPage ?: 1, "cryptocurrency") }
 
             val newsApiResult = newsApi.await()
             val newsDataResult = newsData.await()
+
 
             _loading.value = false
             when (newsApiResult) {
