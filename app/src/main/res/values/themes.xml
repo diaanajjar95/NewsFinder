@@ -16,7 +16,6 @@
         <!-- Customize your theme here. -->
     </style>
 
-
     <style name="Theme.NewsFinder.TextAppearance" parent="TextAppearance.MaterialComponents.Body1">
         <item name="android:gravity">start|center</item>
         <item name="android:textAlignment">gravity</item>

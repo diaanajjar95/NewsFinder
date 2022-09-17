@@ -7,7 +7,6 @@
     <dimen name="dim_margin_list">16dp</dimen>
     <dimen name="dim_margin_layout">16dp</dimen>
 
-
     <dimen name="dim_card_corner_radius">24dp</dimen>
     <dimen name="dim_card_elevation">8dp</dimen>
 

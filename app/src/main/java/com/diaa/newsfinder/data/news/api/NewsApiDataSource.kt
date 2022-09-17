@@ -1,8 +1,7 @@
 package com.diaa.newsfinder.data.news.api
 
+import com.diaa.newsfinder.data.news.api.models.NewsApiResponse
 import com.diaa.newsfinder.data.remote.ApiDefaultResponse
-import com.diaa.newsfinder.data.remote.newsapi.NewsApiGenericResponse
-import com.diaa.newsfinder.data.remote.newsapi.models.NewsApiResponse
 
 interface NewsApiDataSource {
 

@@ -1,8 +1,8 @@
 package com.diaa.newsfinder.data.news.api
 
+import com.diaa.newsfinder.data.news.api.models.NewsApiResponse
 import com.diaa.newsfinder.data.remote.ApiDefaultResponse
 import com.diaa.newsfinder.data.remote.newsapi.NewsApiEndpoints
-import com.diaa.newsfinder.data.remote.newsapi.models.NewsApiResponse
 
 class NewsApiRemoteDataSource(
     private val apiEndpoints: NewsApiEndpoints

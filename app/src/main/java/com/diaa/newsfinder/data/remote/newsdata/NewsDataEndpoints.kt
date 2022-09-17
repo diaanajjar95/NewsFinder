@@ -1,6 +1,6 @@
 package com.diaa.newsfinder.data.remote.newsdata
 
-import com.diaa.newsfinder.data.remote.newsdata.models.NewsDataResponse
+import com.diaa.newsfinder.data.news.data.models.NewsDataResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

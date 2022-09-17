@@ -1,4 +1,4 @@
-package com.diaa.newsfinder.data.remote.newsapi.models
+package com.diaa.newsfinder.data.news.api.models
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

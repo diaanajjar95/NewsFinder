@@ -36,13 +36,12 @@ class HomeViewModel(
         _loading.value = true
         viewModelScope.launch {
             val newsApi =
-                async { newsApiRepository.getNewsApiList("tesla", "2022-08-16", "publishedAt") }
+                async { newsApiRepository.getNewsApiList("tesla", "2022-08-18", "publishedAt") }
             val newsData =
                 async { newsDataRepository.getNewsDataList(nextPage ?: 1, "cryptocurrency") }
 
             val newsApiResult = newsApi.await()
             val newsDataResult = newsData.await()
-
 
             _loading.value = false
             when (newsApiResult) {
