@@ -92,6 +92,10 @@ class HomeFragment : BaseFragment() {
             showLoader(it)
         }
 
+        viewModel.message.observe(viewLifecycleOwner) {
+            showMessage(it)
+        }
+
         viewModel.verticalItems.observe(viewLifecycleOwner) {
             if (it.isEmpty() && verticalAdapter.itemCount == 0) {
                 binding.showVerticalSection = false

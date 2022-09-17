@@ -20,17 +20,27 @@ sealed class ApiDefaultResponse<T> {
                     401 -> {
                         try {
                             val err = response.errorBody()
-                            Failed<T>(UnauthorizedException(err?.string()))
+                            Failed(
+                                NetworkException(
+                                    err?.string(),
+                                    response.raw().request.url.toString()
+                                )
+                            )
                         } catch (ex: Exception) {
-                            Failed<T>(Exception())
+                            Failed(Exception())
                         }
                     }
                     in 400..499 -> {
                         try {
                             val err = response.errorBody()
-                            Failed<T>(ValidationException(err?.string()))
+                            Failed(
+                                NetworkException(
+                                    err?.string(),
+                                    response.raw().request.url.toString()
+                                )
+                            )
                         } catch (ex: Exception) {
-                            Failed<T>(Exception())
+                            Failed(Exception())
                         }
                     }
                     500 -> {

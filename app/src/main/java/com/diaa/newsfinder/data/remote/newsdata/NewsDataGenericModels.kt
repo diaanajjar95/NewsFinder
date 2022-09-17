@@ -7,17 +7,19 @@ import com.squareup.moshi.JsonClass
 class Empty
 
 @JsonClass(generateAdapter = true)
-data class MetaCode(
-    @Json(name = "code")
-    val code: Int?,
-    @Json(name = "error_message")
-    val message: String?,
-    @Json(name = "errors") val errors: Any?
+data class NewsDataErrorResponse(
+    @Json(name = "results")
+    val results: ErrorResults?,
+    @Json(name = "status")
+    val status: String?
 )
 
 @JsonClass(generateAdapter = true)
-data class ErrorResponse(
-    @Json(name = "meta") val meta: MetaCode?
+data class ErrorResults(
+    @Json(name = "code")
+    val code: String?,
+    @Json(name = "message")
+    val message: String?
 )
 
 @JsonClass(generateAdapter = true)

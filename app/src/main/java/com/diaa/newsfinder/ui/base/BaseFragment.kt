@@ -25,7 +25,7 @@ open class BaseFragment : Fragment() {
         }
     }
 
-    protected fun showMessage(message: String) {
+    protected fun showMessage(message: String?) {
         listener.showMessage(message)
     }
 

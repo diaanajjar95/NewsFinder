@@ -7,7 +7,7 @@ import com.squareup.moshi.JsonClass
 class Empty
 
 @JsonClass(generateAdapter = true)
-data class ErrorResponse(
+data class NewsApiErrorResponse(
     @Json(name = "status")
     val status: String?,
     @Json(name = "code")

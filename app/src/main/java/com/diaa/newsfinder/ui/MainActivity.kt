@@ -25,7 +25,9 @@ class MainActivity : AppCompatActivity(), AppListener {
         binding.layoutLoading.root.visibility = View.GONE
     }
 
-    override fun showMessage(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    override fun showMessage(message: String?) {
+        message?.let {
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+        }
     }
 }

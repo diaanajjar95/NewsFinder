@@ -1,6 +1,7 @@
 package com.diaa.newsfinder.ui.home
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -33,26 +34,19 @@ class HomeViewModel(
     private val _loading = LiveEvent<Boolean>()
     val loading: LiveData<Boolean> = _loading
 
-    private var nextPage: Int? = 1
+    private val _message = LiveEvent<String>()
+    val message: LiveData<String> = _message
 
-    @SuppressLint("SimpleDateFormat")
-    fun getTodayDate(): String {
-        val date = Calendar.getInstance().time
-        val sdfDestination = SimpleDateFormat("yyyy/mm/dd")
-        return sdfDestination.format(date)
-    }
+    private var nextPage: Int? = 1
 
     fun getInitData() {
         _loading.value = true
         viewModelScope.launch {
-            val newsApi =
-                async { newsApiRepository.getNewsApiList("tesla", getTodayDate(), "publishedAt") }
-            val newsData =
-                async { newsDataRepository.getNewsDataList(nextPage ?: 1, "cryptocurrency") }
+            val newsApi = async { newsApiRepository.getNewsApiList("tesla", getTodayDate(), "publishedAt") }
+            val newsData = async { newsDataRepository.getNewsDataList(nextPage ?: 1, "cryptocurrency") }
 
             val newsApiResult = newsApi.await()
             val newsDataResult = newsData.await()
-
 
             _loading.value = false
             when (newsApiResult) {
@@ -60,7 +54,7 @@ class HomeViewModel(
                     _horizontalItems.value = NewsApiMapper.buildFrom(newsApiResult.body)
                 }
                 is ApiDefaultResponse.Failed -> {
-
+                    _message.value = newsApiResult.error.localizedMessage
                 }
                 is ApiDefaultResponse.Empty -> {
 
@@ -73,7 +67,7 @@ class HomeViewModel(
                     _verticalItems.value = NewsDataMapper.buildFrom(newsDataResult.body)
                 }
                 is ApiDefaultResponse.Failed -> {
-
+                    _message.value = newsDataResult.error.localizedMessage
                 }
                 is ApiDefaultResponse.Empty -> {
 
@@ -94,13 +88,20 @@ class HomeViewModel(
                     _verticalItems.value = NewsDataMapper.buildFrom(result.body)
                 }
                 is ApiDefaultResponse.Failed -> {
-
+                    _message.value = result.error.localizedMessage
                 }
                 is ApiDefaultResponse.Empty -> {
 
                 }
             }
         }
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    private fun getTodayDate(): String {
+        val date = Calendar.getInstance().time
+        val sdfDestination = SimpleDateFormat("yyyy/mm/dd")
+        return sdfDestination.format(date)
     }
 
 

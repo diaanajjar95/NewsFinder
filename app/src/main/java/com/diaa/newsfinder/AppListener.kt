@@ -4,6 +4,6 @@ interface AppListener {
 
     fun showLoader()
     fun hideLoader()
-    fun showMessage(message: String)
+    fun showMessage(message: String?)
 
 }
