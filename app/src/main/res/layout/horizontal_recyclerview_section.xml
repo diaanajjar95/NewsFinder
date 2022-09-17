@@ -13,19 +13,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dim_margin_sub_title"
-            android:text="News Api"
+            android:text="@string/news_api"
             android:textSize="@dimen/font_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/seeAllTv"
-            style="@style/Theme.NewsFinder.TextAppearance.Light"
+            android:id="@+id/filterTv"
+            style="@style/Theme.NewsFinder.TextAppearance.Regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/gray"
             android:layout_margin="@dimen/dim_margin_sub_title"
-            android:text="See All"
+            android:text="@string/filter"
             android:textSize="@dimen/font_sub_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

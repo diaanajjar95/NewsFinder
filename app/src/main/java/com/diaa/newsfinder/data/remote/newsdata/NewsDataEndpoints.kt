@@ -12,7 +12,6 @@ interface NewsDataEndpoints {
     suspend fun getNewsList(
         @Path("page") page: Int,
         @Query("q") query: String
-//    ): Response<NewsDataGenericResponse<NewsDataResponse>>
     ): Response<NewsDataResponse>
 
 }

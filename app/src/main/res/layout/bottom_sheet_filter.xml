@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="100dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="24dp"
+            android:background="@color/gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/filterByCountryTv"
+            style="@style/Theme.NewsFinder.TextAppearance.Semibold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dim_margin_sub_title"
+            android:text="@string/filter_by_country"
+            android:textSize="@dimen/font_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/countriesToggleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dim_margin_sub_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/filterByCountryTv"
+            app:singleSelection="true">
+
+            <Button
+                android:id="@+id/usBtn"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="US" />
+
+            <Button
+                android:id="@+id/aeBtn"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AE" />
+
+            <Button
+                android:id="@+id/joBtn"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="JO" />
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/filterByCategoryTv"
+            style="@style/Theme.NewsFinder.TextAppearance.Semibold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dim_margin_sub_title"
+            android:text="@string/filter_by_category"
+            android:textSize="@dimen/font_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/countriesToggleButton" />
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/categoriesToggleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dim_margin_sub_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/filterByCategoryTv"
+            app:singleSelection="true">
+
+            <Button
+                android:id="@+id/sportsBtn"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sports" />
+
+            <Button
+                android:id="@+id/businessBtn"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Business" />
+
+            <Button
+                android:id="@+id/healthBtn"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Health" />
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+
+        <Button
+            android:id="@+id/applyBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="@color/blue"
+            android:text="Apply"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/clearBtn"
+            app:layout_constraintTop_toBottomOf="@+id/categoriesToggleButton" />
+
+        <Button
+            android:id="@+id/clearBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="@color/white"
+            android:text="Clear"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/applyBtn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/categoriesToggleButton" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

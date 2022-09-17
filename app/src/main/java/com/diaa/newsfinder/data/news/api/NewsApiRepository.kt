@@ -1,7 +1,6 @@
 package com.diaa.newsfinder.data.news.api
 
 import com.diaa.newsfinder.data.remote.ApiDefaultResponse
-import com.diaa.newsfinder.data.remote.newsapi.NewsApiGenericResponse
 import com.diaa.newsfinder.data.remote.newsapi.models.NewsApiResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -13,7 +12,6 @@ class NewsApiRepository(
         q: String,
         from: String,
         sortBy: String
-//    ): ApiDefaultResponse<NewsApiGenericResponse<NewsApiResponse>> {
     ): ApiDefaultResponse<NewsApiResponse> {
         return withContext(Dispatchers.IO) {
             remoteDataSource.getNewsApiList(q, from, sortBy)
@@ -23,7 +21,6 @@ class NewsApiRepository(
     override suspend fun searchBy(
         country: String,
         category: String
-//    ): ApiDefaultResponse<NewsApiGenericResponse<NewsApiResponse>> {
     ): ApiDefaultResponse<NewsApiResponse> {
         return withContext(Dispatchers.IO) {
             remoteDataSource.searchBy(country, category)

@@ -1,6 +1,5 @@
 package com.diaa.newsfinder.data.remote
 
-import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject

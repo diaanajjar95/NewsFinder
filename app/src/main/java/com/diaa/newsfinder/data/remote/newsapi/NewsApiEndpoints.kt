@@ -12,14 +12,12 @@ interface NewsApiEndpoints {
         @Query("q") query: String,
         @Query("from") from: String,
         @Query("sortBy") sortBy: String
-//    ): Response<NewsApiGenericResponse<NewsApiResponse>>
     ): Response<NewsApiResponse>
 
     @GET("v2/top-headlines/")
     suspend fun searchBy(
         @Query("country") country: String,
         @Query("category") category: String
-//    ): Response<NewsApiGenericResponse<NewsApiResponse>>
     ): Response<NewsApiResponse>
 
 

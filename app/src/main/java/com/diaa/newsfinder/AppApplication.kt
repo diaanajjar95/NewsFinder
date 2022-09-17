@@ -34,7 +34,6 @@ class AppApplication : Application(), DataBindingComponent {
                 )
             )
         }
-
     }
 
     override fun getBindingAdapters(): BindingAdapters {

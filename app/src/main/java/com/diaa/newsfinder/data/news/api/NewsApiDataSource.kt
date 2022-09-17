@@ -10,13 +10,11 @@ interface NewsApiDataSource {
         q: String,
         from: String,
         sortBy: String
-//    ): ApiDefaultResponse<NewsApiGenericResponse<NewsApiResponse>>
     ): ApiDefaultResponse<NewsApiResponse>
 
     suspend fun searchBy(
         country: String,
         category: String
-//    ): ApiDefaultResponse<NewsApiGenericResponse<NewsApiResponse>>
     ): ApiDefaultResponse<NewsApiResponse>
 
 }

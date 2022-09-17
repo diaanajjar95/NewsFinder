@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">NewsFinder</string>
+
+    <string name="no_url_avaliable">Cannot Open URL</string>
+    <string name="news_api">News Api</string>
+    <string name="filter">Filter</string>
+    <string name="news_data">News Data</string>
+    <string name="filter_by_country">By Country</string>
+    <string name="filter_by_category">By Category</string>
 </resources>

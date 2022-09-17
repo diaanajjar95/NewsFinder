@@ -3,53 +3,70 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="showHorizontalSection"
+            type="Boolean" />
+
+        <variable
+            name="showVerticalSection"
+            type="Boolean" />
+
+    </data>
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.home.HomeFragment">
-
-        <include
-            android:id="@+id/horizontalRecyclerviewSection"
-            layout="@layout/horizontal_recyclerview_section"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent"
+            tools:context=".ui.home.HomeFragment">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/titleTv"
-            style="@style/Theme.NewsFinder.TextAppearance.Semibold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dim_margin_sub_title"
-            android:text="News Data"
-            android:textSize="@dimen/font_title"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/horizontalRecyclerviewSection" />
+            <include
+                android:id="@+id/horizontalRecyclerviewSection"
+                layout="@layout/horizontal_recyclerview_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{showHorizontalSection?View.VISIBLE:View.GONE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rc"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/dim_margin_list"
-            android:layout_marginTop="8dp"
-            android:background="@null"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleTv"
-            tools:itemCount="4"
-            tools:listitem="@layout/view_item_news_vertical" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/titleTv"
+                style="@style/Theme.NewsFinder.TextAppearance.Semibold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dim_margin_sub_title"
+                android:text="@string/news_data"
+                android:textSize="@dimen/font_title"
+                android:visibility="@{showVerticalSection?View.VISIBLE:View.GONE}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/horizontalRecyclerviewSection" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dim_margin_list"
+                android:layout_marginTop="8dp"
+                android:background="@null"
+                android:orientation="vertical"
+                android:visibility="@{showVerticalSection?View.VISIBLE:View.GONE}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleTv"
+                tools:itemCount="4"
+                tools:listitem="@layout/view_item_news_vertical" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 

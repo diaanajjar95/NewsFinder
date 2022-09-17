@@ -1,4 +1,4 @@
-package com.diaa.newsfinder.ui.home
+package com.diaa.newsfinder.ui.home.adapters.viewholders
 
 import androidx.recyclerview.widget.RecyclerView
 import com.diaa.newsfinder.databinding.ViewItemNewsHorizontalBinding

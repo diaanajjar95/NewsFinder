@@ -1,6 +1,5 @@
 package com.diaa.newsfinder.ui.home
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,8 +14,6 @@ import com.diaa.newsfinder.ui.mappers.NewsDataMapper
 import com.hadilq.liveevent.LiveEvent
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-
-private const val TAG = "HomeViewModel"
 
 class HomeViewModel(
     private val newsApiRepository: NewsApiDataSource,
@@ -34,10 +31,6 @@ class HomeViewModel(
     val loading: LiveData<Boolean> = _loading
 
     private var nextPage: Int? = 1
-
-    init {
-        Log.d(TAG, "init: ")
-    }
 
     fun getInitData() {
         _loading.value = true
@@ -66,10 +59,6 @@ class HomeViewModel(
 
             when (newsDataResult) {
                 is ApiDefaultResponse.Success -> {
-                    Log.d(
-                        TAG,
-                        "getInitData: newsDataResult.body.nextPage : ${newsDataResult.body.nextPage}"
-                    )
                     nextPage = newsDataResult.body.nextPage
                     _verticalItems.value = NewsDataMapper.buildFrom(newsDataResult.body)
                 }
@@ -80,14 +69,10 @@ class HomeViewModel(
 
                 }
             }
-
-            Log.d(TAG, "getData: newsApi result is : $newsApiResult")
-            Log.d(TAG, "getData: newsData result is : $newsDataResult")
         }
     }
 
     fun getNewsDataByPage() {
-        Log.d(TAG, "getNewsDataByPage: nextPage : $nextPage")
         viewModelScope.launch {
             when (val result =
                 newsDataRepository.getNewsDataList(
@@ -95,10 +80,6 @@ class HomeViewModel(
                     q = "cryptocurrency"
                 )) {
                 is ApiDefaultResponse.Success -> {
-                    Log.d(
-                        TAG,
-                        "getNewsDataByPage: newsDataResult.body.nextPage : ${result.body.nextPage}"
-                    )
                     nextPage = result.body.nextPage
                     _verticalItems.value = NewsDataMapper.buildFrom(result.body)
                 }

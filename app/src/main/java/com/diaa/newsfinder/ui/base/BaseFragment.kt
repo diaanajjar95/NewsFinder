@@ -29,5 +29,4 @@ open class BaseFragment : Fragment() {
         listener.showMessage(message)
     }
 
-
 }

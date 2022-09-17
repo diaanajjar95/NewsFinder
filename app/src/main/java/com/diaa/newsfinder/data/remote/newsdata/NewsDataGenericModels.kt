@@ -20,7 +20,6 @@ data class ErrorResponse(
     @Json(name = "meta") val meta: MetaCode?
 )
 
-
 @JsonClass(generateAdapter = true)
 data class NewsDataGenericResponse<T>(
     @Json(name = "data")

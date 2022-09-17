@@ -23,7 +23,7 @@
 
         <include
             android:id="@+id/layoutLoading"
-            layout="@layout/view_layout_loadding"
+            layout="@layout/view_layout_loading"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"
