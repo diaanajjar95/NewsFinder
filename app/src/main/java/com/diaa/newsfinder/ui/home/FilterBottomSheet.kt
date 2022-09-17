@@ -27,41 +27,15 @@ class FilterBottomSheet : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        fillCountry(binding.countriesRadioGroup.checkedRadioButtonId)
+        fillCategory(binding.categoryRadioGroup.checkedRadioButtonId)
 
-        binding.countriesToggleButton.addOnButtonCheckedListener { toggleButton, checkedId, isChecked ->
-            // Respond to button selection
-            country = when (checkedId) {
-                R.id.usBtn -> {
-                    "us"
-                }
-                R.id.aeBtn -> {
-                    "ae"
-                }
-                R.id.joBtn -> {
-                    "jo"
-                }
-                else -> {
-                    null
-                }
-            }
+        binding.countriesRadioGroup.setOnCheckedChangeListener { group, checkedId ->
+            fillCountry(checkedId)
         }
 
-        binding.categoriesToggleButton.addOnButtonCheckedListener { toggleButton, checkedId, isChecked ->
-            // Respond to button selection
-            category = when (checkedId) {
-                R.id.sportsBtn -> {
-                    "sports"
-                }
-                R.id.businessBtn -> {
-                    "business"
-                }
-                R.id.healthBtn -> {
-                    "health"
-                }
-                else -> {
-                    null
-                }
-            }
+        binding.categoryRadioGroup.setOnCheckedChangeListener { group, checkedId ->
+            fillCategory(checkedId)
         }
 
         binding.applyBtn.setOnClickListener {
@@ -71,7 +45,34 @@ class FilterBottomSheet : BottomSheetDialogFragment() {
         binding.clearBtn.setOnClickListener {
             listener?.onClear()
         }
+    }
 
+    private fun fillCategory(checkedRadioButtonId: Int) {
+        when (checkedRadioButtonId) {
+            R.id.sport_radio_button -> {
+                category = binding.sportRadioButton.text.toString()
+            }
+            R.id.business_radio_button -> {
+                category = binding.businessRadioButton.text.toString()
+            }
+            R.id.health_radio_button -> {
+                category = binding.healthRadioButton.text.toString()
+            }
+        }
+    }
+
+    private fun fillCountry(checkedRadioButtonId: Int) {
+        when (checkedRadioButtonId) {
+            R.id.us_radio_button -> {
+                country = binding.usRadioButton.text.toString()
+            }
+            R.id.ae_radio_button -> {
+                country = binding.aeRadioButton.text.toString()
+            }
+            R.id.jo_radio_button -> {
+                country = binding.joRadioButton.text.toString()
+            }
+        }
     }
 
     fun addListener(listener: OnButtonsClickListener) {

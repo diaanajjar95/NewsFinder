@@ -14,7 +14,7 @@ fun Fragment.openWebBrowser(url: String) {
 }
 
 @SuppressLint("SimpleDateFormat")
-fun String.changeDateFormatTo(fromFormat: String): String {
+fun String.changeDateFormatFrom(fromFormat: String): String {
     var newDate = ""
     try {
         val sdfSource = SimpleDateFormat(fromFormat)

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doOnTextChanged
 import com.diaa.newsfinder.R
 import com.diaa.newsfinder.databinding.FragmentHomeBinding
 import com.diaa.newsfinder.openWebBrowser
@@ -12,6 +13,10 @@ import com.diaa.newsfinder.ui.home.adapters.HorizontalNewsAdapter
 import com.diaa.newsfinder.ui.home.adapters.VerticalNewsAdapter
 import com.diaa.newsfinder.ui.home.models.HorizontalNewsItem
 import com.diaa.newsfinder.ui.home.models.VerticalNewsItem
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -33,6 +38,14 @@ class HomeFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.searchEditText.doOnTextChanged { text, start, count, after ->
+            binding.nestedScrollView.scrollTo(0, 0)
+            CoroutineScope(Dispatchers.Main).launch {
+                delay(1000)
+                viewModel.searchInNewsApi(text.toString())
+            }
+        }
+
         binding.horizontalRecyclerviewSection.horizontalRc.apply {
             adapter = horizontalAdapter
         }
@@ -41,7 +54,7 @@ class HomeFragment : BaseFragment() {
             adapter = verticalAdapter
         }
 
-        binding.horizontalRecyclerviewSection.filterTv.setOnClickListener {
+        binding.filterImg.setOnClickListener {
             val filterBottomSheet = FilterBottomSheet.newInstance()
 
             filterBottomSheet.addListener(object : FilterBottomSheet.OnButtonsClickListener {
@@ -79,6 +92,7 @@ class HomeFragment : BaseFragment() {
         })
 
         viewModel.horizontalItems.observe(viewLifecycleOwner) {
+            binding.searchSection.visibility = View.VISIBLE
             if (it.isNotEmpty()) {
                 binding.showHorizontalSection = true
                 horizontalAdapter.clear()
@@ -115,8 +129,6 @@ class HomeFragment : BaseFragment() {
                 viewModel.getNewsDataByPage()
             }
         }
-
-        viewModel.getInitData()
     }
 
 }

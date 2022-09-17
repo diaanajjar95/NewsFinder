@@ -1,7 +1,6 @@
 package com.diaa.newsfinder.ui.home
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,8 +23,7 @@ class HomeViewModel(
     private val newsDataRepository: NewsDataDataSource,
 ) : ViewModel() {
 
-    private val _horizontalItems: MutableLiveData<MutableList<HorizontalNewsItem>> =
-        MutableLiveData()
+    private val _horizontalItems: MutableLiveData<MutableList<HorizontalNewsItem>> = MutableLiveData()
     val horizontalItems: LiveData<MutableList<HorizontalNewsItem>> = _horizontalItems
 
     private val _verticalItems: MutableLiveData<MutableList<VerticalNewsItem>> = MutableLiveData()
@@ -37,13 +35,26 @@ class HomeViewModel(
     private val _message = LiveEvent<String>()
     val message: LiveData<String> = _message
 
-    private var nextPage: Int? = 1
+    // newsapi variables
+    private var apiQuery: String = "tesla"
+    private var fromDate: String = "2022/09/16"
+    private var sortBy: String = "publishedAt"
 
-    fun getInitData() {
+    // newsdata variables
+    private var nextPage: Int? = 1
+    private var dataQuery: String = "cryptocurrency"
+
+    init {
+        getInitData()
+    }
+
+    private fun getInitData() {
         _loading.value = true
         viewModelScope.launch {
-            val newsApi = async { newsApiRepository.getNewsApiList("tesla", getTodayDate(), "publishedAt") }
-            val newsData = async { newsDataRepository.getNewsDataList(nextPage ?: 1, "cryptocurrency") }
+            val newsApi =
+                async { newsApiRepository.getNewsApiList(apiQuery, fromDate, sortBy) }
+            val newsData =
+                async { newsDataRepository.getNewsDataList(nextPage ?: 1, dataQuery) }
 
             val newsApiResult = newsApi.await()
             val newsDataResult = newsData.await()
@@ -56,9 +67,6 @@ class HomeViewModel(
                 is ApiDefaultResponse.Failed -> {
                     _message.value = newsApiResult.error.localizedMessage
                 }
-                is ApiDefaultResponse.Empty -> {
-
-                }
             }
 
             when (newsDataResult) {
@@ -69,8 +77,26 @@ class HomeViewModel(
                 is ApiDefaultResponse.Failed -> {
                     _message.value = newsDataResult.error.localizedMessage
                 }
-                is ApiDefaultResponse.Empty -> {
+            }
+        }
+    }
 
+    fun searchInNewsApi(searchQuery: String) {
+        _loading.value = true
+        viewModelScope.launch {
+            when (val result =
+                newsApiRepository.getNewsApiList(
+                    if (searchQuery.isEmpty()) apiQuery else searchQuery,
+                    "2022/09/16",
+                    sortBy
+                )) {
+                is ApiDefaultResponse.Success -> {
+                    _loading.value = false
+                    _horizontalItems.value = NewsApiMapper.buildFrom(result.body)
+                }
+                is ApiDefaultResponse.Failed -> {
+                    _loading.value = false
+                    _message.value = result.error.localizedMessage
                 }
             }
         }
@@ -81,7 +107,7 @@ class HomeViewModel(
             when (val result =
                 newsDataRepository.getNewsDataList(
                     page = nextPage ?: 1,
-                    q = "cryptocurrency"
+                    q = dataQuery
                 )) {
                 is ApiDefaultResponse.Success -> {
                     nextPage = result.body.nextPage
@@ -89,9 +115,6 @@ class HomeViewModel(
                 }
                 is ApiDefaultResponse.Failed -> {
                     _message.value = result.error.localizedMessage
-                }
-                is ApiDefaultResponse.Empty -> {
-
                 }
             }
         }
@@ -103,6 +126,5 @@ class HomeViewModel(
         val sdfDestination = SimpleDateFormat("yyyy/mm/dd")
         return sdfDestination.format(date)
     }
-
 
 }

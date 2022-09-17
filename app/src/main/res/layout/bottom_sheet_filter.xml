@@ -24,41 +24,40 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dim_margin_sub_title"
             android:text="@string/filter_by_country"
-            android:textSize="@dimen/font_title"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view" />
 
-        <com.google.android.material.button.MaterialButtonToggleGroup
-            android:id="@+id/countriesToggleButton"
-            android:layout_width="wrap_content"
+        <RadioGroup
+            android:id="@+id/countriesRadioGroup"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dim_margin_sub_title"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/filterByCountryTv"
-            app:singleSelection="true">
+            android:layout_marginHorizontal="24dp"
+            android:checkedButton="@+id/us_radio_button"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/filterByCountryTv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/filterByCountryTv"
+            app:layout_constraintTop_toTopOf="@+id/filterByCountryTv">
 
-            <Button
-                android:id="@+id/usBtn"
-                style="?attr/materialButtonOutlinedStyle"
+            <RadioButton
+                android:id="@+id/us_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="US" />
+                android:text="us" />
 
-            <Button
-                android:id="@+id/aeBtn"
-                style="?attr/materialButtonOutlinedStyle"
+            <RadioButton
+                android:id="@+id/ae_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="AE" />
+                android:text="ae" />
 
-            <Button
-                android:id="@+id/joBtn"
-                style="?attr/materialButtonOutlinedStyle"
+            <RadioButton
+                android:id="@+id/jo_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="JO" />
-        </com.google.android.material.button.MaterialButtonToggleGroup>
-
+                android:text="jo" />
+        </RadioGroup>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/filterByCategoryTv"
@@ -67,41 +66,40 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dim_margin_sub_title"
             android:text="@string/filter_by_category"
-            android:textSize="@dimen/font_title"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/countriesToggleButton" />
+            app:layout_constraintTop_toBottomOf="@+id/countriesRadioGroup" />
 
-        <com.google.android.material.button.MaterialButtonToggleGroup
-            android:id="@+id/categoriesToggleButton"
-            android:layout_width="wrap_content"
+        <RadioGroup
+            android:id="@+id/categoryRadioGroup"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dim_margin_sub_title"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/filterByCategoryTv"
-            app:singleSelection="true">
+            android:layout_marginHorizontal="24dp"
+            android:checkedButton="@+id/sport_radio_button"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/filterByCategoryTv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/filterByCategoryTv"
+            app:layout_constraintTop_toTopOf="@+id/filterByCategoryTv">
 
-            <Button
-                android:id="@+id/sportsBtn"
-                style="?attr/materialButtonOutlinedStyle"
+            <RadioButton
+                android:id="@+id/sport_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sports" />
+                android:text="Sport" />
 
-            <Button
-                android:id="@+id/businessBtn"
-                style="?attr/materialButtonOutlinedStyle"
+            <RadioButton
+                android:id="@+id/business_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Business" />
 
-            <Button
-                android:id="@+id/healthBtn"
-                style="?attr/materialButtonOutlinedStyle"
+            <RadioButton
+                android:id="@+id/health_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Health" />
-        </com.google.android.material.button.MaterialButtonToggleGroup>
-
+        </RadioGroup>
 
         <Button
             android:id="@+id/applyBtn"
@@ -116,7 +114,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/clearBtn"
-            app:layout_constraintTop_toBottomOf="@+id/categoriesToggleButton" />
+            app:layout_constraintTop_toBottomOf="@+id/categoryRadioGroup" />
 
         <Button
             android:id="@+id/clearBtn"
@@ -132,7 +130,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/applyBtn"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/categoriesToggleButton" />
+            app:layout_constraintTop_toBottomOf="@+id/categoryRadioGroup" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

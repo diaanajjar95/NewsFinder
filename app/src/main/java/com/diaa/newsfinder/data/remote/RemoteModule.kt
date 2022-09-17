@@ -36,11 +36,11 @@ val remoteModule = module {
             .build()
     }
 
-    single<NewsApiInterceptor>/*(named(KOIN_NAME_NEWS_API_INTERCEPTOR))*/ {
+    single<NewsApiInterceptor> {
         NewsApiInterceptor()
     }
 
-    single<NewsDataInterceptor>/*(named(KOIN_NAME_NEWS_DATA_INTERCEPTOR))*/ {
+    single<NewsDataInterceptor> {
         NewsDataInterceptor()
     }
 

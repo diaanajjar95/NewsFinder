@@ -6,7 +6,6 @@ sealed class ApiDefaultResponse<T> {
 
     data class Failed<T>(val error: Throwable) : ApiDefaultResponse<T>()
     data class Success<T>(val body: T) : ApiDefaultResponse<T>()
-    class Empty<T> : ApiDefaultResponse<T>()
 
     companion object {
 
